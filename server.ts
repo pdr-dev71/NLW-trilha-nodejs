@@ -1,14 +1,11 @@
-import express, { request } from 'express';
+import 'reflect-metadata';
+import express from 'express';
+import "./database";
+import { router } from './routes';
 
 const app = express();
 
-app.get("/users", (request, response) => {
-    return response.send({message: "Deu certo de novo garai kakkka"});
-})
+app.use(express.json());
+app.use(router);
 
-app.post("/", (request, response) => {
-    return response.json({message: "os dados foram salvos com sucesso"});
-})
-app.listen(3333, () => console.log("port is running"))
-
-    
+app.listen(3333, () => console.log("port is running"));
